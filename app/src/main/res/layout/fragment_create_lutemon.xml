@@ -8,26 +8,27 @@
     tools:context=".fragments.CreateLutemonFragment">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCreateLutemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
-        android:text="Button"
+        android:text="Luo Lutemon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/etLutemonName"
         android:layout_width="284dp"
         android:layout_height="51dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Lutemonin nimi"
         android:inputType="textPersonName"
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -35,7 +36,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="4dp"
         android:text="Luo Lutemon"
         android:textColor="#000000"
         android:textSize="34sp"
@@ -46,12 +47,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/rgLutemonColor"
         android:layout_width="135dp"
         android:layout_height="232dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateLutemon"
+        app:layout_constraintEnd_toStartOf="@+id/rgLutemonClass"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintTop_toBottomOf="@+id/etLutemonName">
 
         <RadioButton
             android:id="@+id/rbWhite"
@@ -80,19 +82,19 @@
         <RadioButton
             android:id="@+id/rbBlack"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Musta" />
 
     </RadioGroup>
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/rgLutemonClass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateLutemon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintTop_toBottomOf="@+id/etLutemonName">
 
         <RadioButton
             android:id="@+id/rbTank"
