@@ -7,60 +7,103 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 
+import com.example.lutemons.Lutemon;
 import com.example.lutemons.R;
+import com.example.lutemons.Storage;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreateLutemonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class CreateLutemonFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public CreateLutemonFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentA.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CreateLutemonFragment newInstance(String param1, String param2) {
-        CreateLutemonFragment fragment = new CreateLutemonFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_lutemon, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_lutemon, container, false);
+        return view;
+    }
+    public void createLutemon(View view){
+        EditText etLutemonName = view.findViewById(R.id.etLutemonName);
+        RadioGroup rgLutemonClass = view.findViewById(R.id.rgLutemonClass);
+        RadioGroup rgLutemonColor = view.findViewById(R.id.rgLutemonColor);
+
+        switch (rgLutemonColor.getCheckedRadioButtonId()) {
+
+            case R.id.rbWhite:
+                switch (rgLutemonClass.getCheckedRadioButtonId()) {
+                    case R.id.rbTank:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "White", "Tank", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbWarrior:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "White", "Warrior", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbMonk:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "White", "Monk", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                }
+            case R.id.rbGreen:
+                switch (rgLutemonClass.getCheckedRadioButtonId()) {
+                    case R.id.rbTank:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Tank", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbWarrior:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Warrior", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbMonk:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Monk", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                }
+            case R.id.rbPink:
+                switch (rgLutemonClass.getCheckedRadioButtonId()) {
+                    case R.id.rbTank:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Tank", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbWarrior:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Warrior", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbMonk:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Monk", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                }
+            case R.id.rbOrange:
+                switch (rgLutemonClass.getCheckedRadioButtonId()) {
+                    case R.id.rbTank:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Orange", "Tank", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbWarrior:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Orange", "Warrior", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbMonk:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Orange", "Monk", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                }
+            case R.id.rbBlack:
+                switch (rgLutemonClass.getCheckedRadioButtonId()) {
+                    case R.id.rbTank:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Black", "Tank", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbWarrior:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Black", "Warrior", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                    case R.id.rbMonk:
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Black", "Monk", 1, 1, 1, 1, 1, 0, 0));
+                        break;
+                }
+        }
     }
 }

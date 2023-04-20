@@ -3,20 +3,19 @@ package com.example.lutemons;
 public class Lutemon {
 
     protected String name, color, species;
-    protected Integer attack, defense, experience, health, maxHealth, wins, losses, id;
+    protected Integer attack, defense, experience, health, maxHealth, wins, losses;
 
-    public Lutemon(String name, String color, String species){
+    public Lutemon(String name, String color, String species,Integer attack, Integer defense, Integer experience, Integer health, Integer maxHealth, Integer wins, Integer losses){
         this.name = name;
         this.color = color;
         this.species = species;
-        this.attack = 0;
-        this.defense = 0;
-        this.experience = 0;
-        this.health = 0;
-        this.maxHealth = 0;
-        this.wins = 0;
-        this.losses = 0;
-        this.id = 0;
+        this.attack = attack;
+        this.defense = defense;
+        this.experience = experience;
+        this.health = health;
+        this.maxHealth = maxHealth;
+        this.wins = wins;
+        this.losses = losses;
     }
 
     public String getName() {return name;}
@@ -54,7 +53,6 @@ public class Lutemon {
     public void setWins(Integer wins) {this.wins = wins;}
 
     public void setLosses(Integer losses) {this.losses = losses;}
-
 
     public void setId(Integer id) {this.id = id;}
 }
