@@ -63,6 +63,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "White", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbGreen:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -75,6 +76,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbPink:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -87,6 +89,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbOrange:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -99,6 +102,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Orange", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbBlack:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -111,6 +115,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Black", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
         }
     }
 }
