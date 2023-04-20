@@ -38,7 +38,6 @@ public class Lutemon {
 
     public Integer getLosses() {return losses;}
 
-    public Integer getId() {return id;}
 
     public void setAttack(Integer attack) {this.attack = attack;}
 
@@ -54,5 +53,4 @@ public class Lutemon {
 
     public void setLosses(Integer losses) {this.losses = losses;}
 
-    public void setId(Integer id) {this.id = id;}
 }
