@@ -55,6 +55,5 @@ public class Lutemon {
 
     public void setLosses(Integer losses) {this.losses = losses;}
 
-
     public void setId(Integer id) {this.id = id;}
 }
