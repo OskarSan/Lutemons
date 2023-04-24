@@ -26,4 +26,9 @@ public class IntroActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void startLeaderboard(View view){
+        Intent intent = new Intent(this, LeaderboardsActivity.class);
+        startActivity(intent);
+    }
 }
