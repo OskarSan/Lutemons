@@ -1,5 +1,6 @@
 package com.example.lutemons.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,13 +13,19 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.example.lutemons.Lutemon;
+import com.example.lutemons.MainActivity;
 import com.example.lutemons.R;
 import com.example.lutemons.Storage;
 
 
 public class CreateLutemonFragment extends Fragment {
+    private Context mContext;
 
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
 
     public CreateLutemonFragment() {
         // Required empty public constructor
@@ -41,11 +48,13 @@ public class CreateLutemonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createLutemon(view);
+
             }
         });
         return view;
     }
     public void createLutemon(View view){
+
         EditText etLutemonName = view.findViewById(R.id.etLutemonName);
         RadioGroup rgLutemonClass = view.findViewById(R.id.rgLutemonClass);
         RadioGroup rgLutemonColor = view.findViewById(R.id.rgLutemonColor);
@@ -117,5 +126,6 @@ public class CreateLutemonFragment extends Fragment {
                 }
                 break;
         }
+        Storage.getInstance().saveLutemons(mContext);
     }
 }
