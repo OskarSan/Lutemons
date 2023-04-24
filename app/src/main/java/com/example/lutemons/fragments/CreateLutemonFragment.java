@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -35,6 +36,13 @@ public class CreateLutemonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_lutemon, container, false);
+        Button btnCreateLutemon = view.findViewById(R.id.btnCreateLutemon);
+        btnCreateLutemon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createLutemon(view);
+            }
+        });
         return view;
     }
     public void createLutemon(View view){
@@ -43,7 +51,6 @@ public class CreateLutemonFragment extends Fragment {
         RadioGroup rgLutemonColor = view.findViewById(R.id.rgLutemonColor);
 
         switch (rgLutemonColor.getCheckedRadioButtonId()) {
-
             case R.id.rbWhite:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -56,6 +63,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "White", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbGreen:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -68,6 +76,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbPink:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -80,6 +89,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbOrange:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -92,6 +102,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Orange", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
             case R.id.rbBlack:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
@@ -104,6 +115,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Black", "Monk", 1, 1, 1, 1, 1, 0, 0));
                         break;
                 }
+                break;
         }
     }
 }
