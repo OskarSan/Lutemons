@@ -9,7 +9,8 @@ import android.view.Window;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-
+    //TODO fighting, healin, training, leaderboard
+    //TODO different listadapter and viewholder to train and fight
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
