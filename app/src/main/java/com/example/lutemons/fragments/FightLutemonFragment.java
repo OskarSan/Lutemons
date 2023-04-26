@@ -11,22 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioGroup;
 
+import com.example.lutemons.Lutemon;
 import com.example.lutemons.LutemonListAdapter;
 import com.example.lutemons.R;
 import com.example.lutemons.Storage;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FightLutemonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.HashMap;
+
+
 public class FightLutemonFragment extends Fragment {
-
-
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
 
     private String mParam1;
@@ -43,30 +39,12 @@ public class FightLutemonFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FightLutemonFragment.
-     */
-
-    public static FightLutemonFragment newInstance(String param1, String param2) {
-        FightLutemonFragment fragment = new FightLutemonFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
 
     }
@@ -74,19 +52,41 @@ public class FightLutemonFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fight_lutemon, container, false);
+        View view = inflater.inflate(R.layout.fragment_fight_lutemon , container, false);
         storage = Storage.getInstance();
-        recyclerView = view.findViewById(R.id.rvLutemonList);
+        /*recyclerView = view.findViewById(R.id.rvLutemonList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new LutemonListAdapter(getContext(), storage.getLutemonHashMap()));
-
+        recyclerView.setAdapter(new LutemonListAdapter(getContext(), storage.getLutemonHashMap()));*/
         fightButton = view.findViewById(R.id.fightButton);
+        CheckBox cb1 = view.findViewById(R.id.cb1);
+        CheckBox cb2 = view.findViewById(R.id.cb2);
+        fightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fight(view);
+            }
+        });
         return view;
     }
 
     public void onResume(){
         super.onResume();
-        recyclerView.setAdapter(new LutemonListAdapter(getContext(), storage.getLutemonHashMap()));
+        /*recyclerView.setAdapter(new LutemonListAdapter(getContext(), storage.getLutemonHashMap()));*/    }
+    public void fight(View view){
+        CheckBox cb1 = view.findViewById(R.id.cb1);
+        CheckBox cb2 = view.findViewById(R.id.cb2);
+
+        if(cb1.isChecked() & cb2.isChecked()){
+            storage = Storage.getInstance();
+            HashMap<Integer, Lutemon> lutemons = storage.getLutemonHashMap();
+            Lutemon fighter1 = lutemons.get(0);
+            Lutemon fighter2 = lutemons.get(1);
+            while(fighter1.getHealth() > 0 & fighter2.getHealth() > 0){
+                //todo attack ja defense metodikutsut tähän
+                fighter2.defense(fighter1.attack());
+                System.out.println(fighter2.getHealth());
+            }
+        }
     }
 
 }

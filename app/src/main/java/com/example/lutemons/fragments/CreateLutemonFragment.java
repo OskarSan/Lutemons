@@ -79,7 +79,7 @@ public class CreateLutemonFragment extends Fragment {
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Tank", 1, 1, 1, 1, 1, 0, 0));
                         break;
                     case R.id.rbWarrior:
-                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Warrior", 1, 1, 1, 1, 1, 0, 0));
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Warrior", 3, 1, 1, 10, 10, 0, 0));
                         break;
                     case R.id.rbMonk:
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Green", "Monk", 1, 1, 1, 1, 1, 0, 0));
@@ -89,7 +89,7 @@ public class CreateLutemonFragment extends Fragment {
             case R.id.rbPink:
                 switch (rgLutemonClass.getCheckedRadioButtonId()) {
                     case R.id.rbTank:
-                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Tank", 1, 1, 1, 1, 1, 0, 0));
+                        Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Tank", 2, 1, 1, 10, 10, 0, 0));
                         break;
                     case R.id.rbWarrior:
                         Storage.getInstance().addLutemon(new Lutemon(etLutemonName.getText().toString(), "Pink", "Warrior", 1, 1, 1, 1, 1, 0, 0));

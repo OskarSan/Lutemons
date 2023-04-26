@@ -53,5 +53,14 @@ public class Lutemon implements Serializable {
     public void setWins(Integer wins) {this.wins = wins;}
 
     public void setLosses(Integer losses) {this.losses = losses;}
+    //Todo levelUp metodi
 
+    //Todo heal metodi
+    public void defense(int damage){
+        System.out.println(damage + " " + getDefense());
+        this.setHealth(getHealth() - (damage - getDefense()));
+    }
+    public int attack(){
+        return this.attack;
+    }
 }
