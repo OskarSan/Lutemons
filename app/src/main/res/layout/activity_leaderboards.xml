@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="lvl"
-            />
+            android:onClick="sortByLVL"/>
 
         <Button
             android:id="@+id/hpButton"
@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="hp" />
+            android:text="hp"
+            android:onClick="sortByHP"/>
 
         <Button
             android:id="@+id/winsButton"
@@ -42,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="wins" />
+            android:text="wins"
+            android:onClick="sortByWins"/>
     </LinearLayout>
 
     <ListView

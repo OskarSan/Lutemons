@@ -75,6 +75,16 @@ public class Storage {
         lutemonArrayList.sort(Lutemon.LvlComparator);
         return lutemonArrayList;
     }
+    public ArrayList<Lutemon> sortArrayListByHP(){
+        makeNewArrayList();
+        lutemonArrayList.sort(Lutemon.HPComparator);
+        return lutemonArrayList;
+    }
+    public ArrayList<Lutemon> sortArrayListByWins(){
+        makeNewArrayList();
+        lutemonArrayList.sort(Lutemon.WinsComparator);
+        return lutemonArrayList;
+    }
 
     public ArrayList<Lutemon> makeNewArrayList (){
         lutemonArrayList.clear();

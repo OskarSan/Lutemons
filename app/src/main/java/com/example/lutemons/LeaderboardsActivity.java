@@ -3,6 +3,7 @@ package com.example.lutemons;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ public class LeaderboardsActivity extends AppCompatActivity {
     private LBPageAdapter LBPageAdapter;
 
     private TextView textView;
-    private Button lvlButton, hpButton, winsButton;
+    public Button lvlButton, hpButton, winsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +38,20 @@ public class LeaderboardsActivity extends AppCompatActivity {
         listView = findViewById(R.id.LBListView);
         listView.setAdapter(LBPageAdapter);
 
+
     }
 
-    public void sortByLVL(){
+    public void sortByLVL(View view){
         lutemonArrayList = Storage.getInstance().sortArrayListByLvl();
         LBPageAdapter.notifyDataSetChanged();
     }
-    public void sortByHP(){
-
+    public void sortByHP(View view){
+        lutemonArrayList = Storage.getInstance().sortArrayListByHP();
+        LBPageAdapter.notifyDataSetChanged();
     }
-    public void sortByWins(){
-
+    public void sortByWins(View view){
+        lutemonArrayList = Storage.getInstance().sortArrayListByWins();
+        LBPageAdapter.notifyDataSetChanged();
     }
 
 }
