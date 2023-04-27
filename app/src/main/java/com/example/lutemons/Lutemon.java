@@ -1,6 +1,7 @@
 package com.example.lutemons;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 public class Lutemon implements Serializable {
 
@@ -54,4 +55,25 @@ public class Lutemon implements Serializable {
 
     public void setLosses(Integer losses) {this.losses = losses;}
 
+
+    public static Comparator<Lutemon> LvlComparator = new Comparator<Lutemon>() {
+        @Override
+        public int compare(Lutemon p1, Lutemon p2) {
+            return p1.getName().compareTo(p2.getName());
+        }
+    };
+
+    public static Comparator<Lutemon> HPComparator = new Comparator<Lutemon>() {
+        @Override
+        public int compare(Lutemon p1, Lutemon p2) {
+            return p1.getMaxHealth().compareTo(p2.getMaxHealth());
+        }
+    };
+
+    public static Comparator<Lutemon> WinsComparator = new Comparator<Lutemon>() {
+        @Override
+        public int compare(Lutemon p1, Lutemon p2) {
+            return p1.getWins().compareTo(p2.getWins());
+        }
+    };
 }

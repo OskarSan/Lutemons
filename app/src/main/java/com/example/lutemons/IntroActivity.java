@@ -33,6 +33,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     public void startLeaderboard(View view){
+        Storage.getInstance().loadLutemons(this);
         Intent intent = new Intent(this, LeaderboardsActivity.class);
         startActivity(intent);
     }
