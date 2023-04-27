@@ -8,27 +8,28 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LBPageAdapter extends BaseAdapter {
 
     private Storage storage;
     Context context;
-    HashMap<Integer,Lutemon> lutemonHashMap;
+    ArrayList<Lutemon> lutemonArrayList;
 
     LayoutInflater inflater;
 
-    public LBPageAdapter(Context context){
+    public LBPageAdapter(Context context, ArrayList<Lutemon> lutemonArrayList){
         this.context = context;
 
-        storage = Storage.getInstance();
-        this.lutemonHashMap = storage.getLutemonHashMap();
+        this.lutemonArrayList = lutemonArrayList;
 
         inflater = LayoutInflater.from(context);
     }
     @Override
     public int getCount() {
-        return lutemonHashMap.size();
+        return lutemonArrayList.size();
     }
 
     @Override
@@ -47,10 +48,10 @@ public class LBPageAdapter extends BaseAdapter {
         TextView LBName = view.findViewById(R.id.LBName);
         TextView LBHealth = view.findViewById(R.id.LBHealth);
         ImageView LBPicture = view.findViewById(R.id.LBImageView);
-        LBName.setText(lutemonHashMap.get(i).getName());
-        LBHealth.setText(String.valueOf(lutemonHashMap.get(i).getHealth()));
+        LBName.setText(lutemonArrayList.get(i).getName());
+        LBHealth.setText(String.valueOf(lutemonArrayList.get(i).getHealth()));
 
-        System.out.println(lutemonHashMap.get(i).getName());
+        System.out.println(lutemonArrayList.get(i).getName());
         return view;
     }
 }
