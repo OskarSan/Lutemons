@@ -10,29 +10,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.example.lutemons.Lutemon;
 import com.example.lutemons.LutemonListAdapter;
 import com.example.lutemons.R;
+import com.example.lutemons.SpinnerAdapter;
 import com.example.lutemons.Storage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class FightLutemonFragment extends Fragment {
 
-
-    private String mParam1;
-    private String mParam2;
-
+    private Lutemon selectedLutemon1, selectedLutemon2;
     private Storage storage;
     private RecyclerView recyclerView;
     private View headerView;
     private Button fightButton;
 
+    private ArrayList<Lutemon> lutemonsNameList;
+    private SpinnerAdapter spinnerAdapter;
+    private Spinner dropDown, dropDown2;
 
 
     public FightLutemonFragment() {
@@ -54,33 +58,63 @@ public class FightLutemonFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fight_lutemon , container, false);
         storage = Storage.getInstance();
-        /*recyclerView = view.findViewById(R.id.rvLutemonList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new LutemonListAdapter(getContext(), storage.getLutemonHashMap()));*/
+        initList();
         fightButton = view.findViewById(R.id.fightButton);
-        CheckBox cb1 = view.findViewById(R.id.cb1);
-        CheckBox cb2 = view.findViewById(R.id.cb2);
-        fightButton.setOnClickListener(new View.OnClickListener() {
+        dropDown = view.findViewById(R.id.dropDown);
+        dropDown2 = view.findViewById(R.id.dropdown2);
+        spinnerAdapter = new SpinnerAdapter(getContext(), lutemonsNameList);
+        dropDown.setAdapter(spinnerAdapter);
+        dropDown2.setAdapter(spinnerAdapter);
+
+        fightButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                fight(view);
+                fight(selectedLutemon1, selectedLutemon2);
             }
         });
         return view;
     }
+    private void initList(){
+        storage = Storage.getInstance();
+        lutemonsNameList = new ArrayList<>();
+        HashMap<Integer, Lutemon> lutemonHashMap = storage.getLutemonHashMap();
+        for(HashMap.Entry<Integer, Lutemon> set :lutemonHashMap.entrySet()){
+            lutemonsNameList.add(set.getValue());
+        }
+    }
 
     public void onResume(){
         super.onResume();
-        /*recyclerView.setAdapter(new LutemonListAdapter(getContext(), storage.getLutemonHashMap()));*/    }
-    public void fight(View view){
-        CheckBox cb1 = view.findViewById(R.id.cb1);
-        CheckBox cb2 = view.findViewById(R.id.cb2);
+        initList();
+        spinnerAdapter = new SpinnerAdapter(getContext(), lutemonsNameList);
+        dropDown.setAdapter(spinnerAdapter);
+        dropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedLutemon1 = (Lutemon)adapterView.getItemAtPosition(i);
+            }
 
-        if(cb1.isChecked() & cb2.isChecked()){
-            storage = Storage.getInstance();
-            HashMap<Integer, Lutemon> lutemons = storage.getLutemonHashMap();
-            Lutemon fighter1 = lutemons.get(0);
-            Lutemon fighter2 = lutemons.get(1);
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        dropDown2.setAdapter(spinnerAdapter);
+        dropDown2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedLutemon2 = (Lutemon)adapterView.getItemAtPosition(i);
+                System.out.println(selectedLutemon2.getName() + " valittu");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+    public void fight(Lutemon fighter1, Lutemon fighter2){
             while(fighter1.getHealth() > 0 & fighter2.getHealth() > 0){
                 //todo attack ja defense metodikutsut tähän
                 fighter2.defense(fighter1.attack());
@@ -88,5 +122,3 @@ public class FightLutemonFragment extends Fragment {
             }
         }
     }
-
-}

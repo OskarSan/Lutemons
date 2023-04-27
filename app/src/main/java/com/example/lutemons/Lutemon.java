@@ -1,6 +1,7 @@
 package com.example.lutemons;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Lutemon implements Serializable {
 
@@ -53,9 +54,48 @@ public class Lutemon implements Serializable {
     public void setWins(Integer wins) {this.wins = wins;}
 
     public void setLosses(Integer losses) {this.losses = losses;}
-    //Todo levelUp metodi
+    public void levelUp(){
+        String lutemonClass = this.getSpecies();
+        switch (lutemonClass){
+            case "Tank":
+                //Todo statsimuutokset levelupissa
+                break;
+            case "Warrior":
 
-    //Todo heal metodi
+                break;
+            case "Monk":
+
+                break;
+        }
+    }
+    public void heal(Integer healAmount){
+        if(this.getHealth() + healAmount < this.getMaxHealth()){
+            this.setHealth(this.getHealth() + healAmount);
+        }
+        else{
+            this.setHealth(this.getMaxHealth());
+        }
+    }
+
+    public void trainLutemon(){
+        Integer trainingDamage = 0;
+        Random rand = new Random();
+        Integer randomNumber = rand.nextInt(11);
+        if(randomNumber >= 10){
+            trainingDamage = 4;
+        } else if (randomNumber >= 6) {
+            trainingDamage = 3;
+        } else if (randomNumber >= 3) {
+            trainingDamage = 2;
+        }else if (randomNumber >= 1) {
+            trainingDamage = 1;
+        }else if (randomNumber == 0) {
+            trainingDamage = 0;
+        }
+        this.setHealth(this.getHealth() - trainingDamage);
+        this.setExperience(this.getExperience() + 1);
+    }
+
     public void defense(int damage){
         System.out.println(damage + " " + getDefense());
         this.setHealth(getHealth() - (damage - getDefense()));
