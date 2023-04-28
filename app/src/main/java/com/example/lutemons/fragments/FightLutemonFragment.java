@@ -120,5 +120,15 @@ public class FightLutemonFragment extends Fragment {
                 fighter2.defense(fighter1.attack());
                 System.out.println(fighter2.getHealth());
             }
+            if(fighter1.getHealth()>0){
+                System.out.println(fighter1.getName() + " voittaa");
+                fighter1.setExperience(fighter1.getExperience() + 10);
+                Storage.getInstance().removeLutemon(fighter2);
+            }else{
+                System.out.println(fighter2.getName() + " voittaa");
+                fighter2.setExperience(fighter2.getExperience() + 10);
+                Storage.getInstance().removeLutemon(fighter1);
+            }
+
         }
     }
