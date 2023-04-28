@@ -1,6 +1,7 @@
 package com.example.lutemons;
 
 import android.content.Context;
+import android.view.View;
 
 import com.example.lutemons.fragments.CreateLutemonFragment;
 
@@ -11,6 +12,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Storage {
@@ -20,6 +25,7 @@ public class Storage {
 
     HashMap<Integer, Lutemon> lutemonHashMap = new HashMap<>();
 
+    ArrayList<Lutemon> lutemonArrayList = new ArrayList<>();
     public void addLutemon(Lutemon lutemon){
         lutemonHashMap.put(id, lutemon);
         id += 1;
@@ -65,6 +71,7 @@ public class Storage {
     public HashMap<Integer, Lutemon> getLutemonHashMap() {
         return lutemonHashMap;
     }
+
     public ArrayList<Lutemon> getLutemonArrayList(){
         ArrayList<Lutemon> lutemons = new ArrayList<>();
         storage = Storage.getInstance();
@@ -83,6 +90,31 @@ public class Storage {
                 it.remove();
             }
         }
+
+
+    public ArrayList<Lutemon> sortArrayListByLvl(){
+        makeNewArrayList();
+        lutemonArrayList.sort(Lutemon.LvlComparator);
+        return lutemonArrayList;
+    }
+    public ArrayList<Lutemon> sortArrayListByHP(){
+        makeNewArrayList();
+        lutemonArrayList.sort(Lutemon.HPComparator);
+        return lutemonArrayList;
+    }
+    public ArrayList<Lutemon> sortArrayListByWins(){
+        makeNewArrayList();
+        lutemonArrayList.sort(Lutemon.WinsComparator);
+        return lutemonArrayList;
+    }
+
+    public ArrayList<Lutemon> makeNewArrayList (){
+        lutemonArrayList.clear();
+        for (HashMap.Entry<Integer,Lutemon> entry : lutemonHashMap.entrySet()) {
+            lutemonArrayList.add(entry.getValue());
+        }
+        return lutemonArrayList;
+
     }
 
 }

@@ -6,13 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".LeaderboardsActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="leadbord"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/LBListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <Button
+            android:id="@+id/lvlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="lvl"
+            android:onClick="sortByLVL"/>
+
+        <Button
+            android:id="@+id/hpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="hp"
+            android:onClick="sortByHP"/>
+
+        <Button
+            android:id="@+id/winsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="wins"
+            android:onClick="sortByWins"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/LBListView"
+        android:layout_width="409dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="100"
+        android:text="RATE BY:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/LBListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.241" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

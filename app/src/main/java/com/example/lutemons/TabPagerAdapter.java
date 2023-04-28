@@ -30,7 +30,6 @@ public class TabPagerAdapter extends FragmentStateAdapter {
             default:
                 return new CreateLutemonFragment();
         }
-
     }
 
     @Override
