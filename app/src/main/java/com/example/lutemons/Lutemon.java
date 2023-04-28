@@ -104,7 +104,7 @@ public class Lutemon implements Serializable {
     public void defense(int damage){
         System.out.println(damage + " " + getDefense());
         if(damage - getDefense() > 0){
-            this.setHealth(getHealth() - (damage - getDefense()));
+            this.setHealth(getHealth() - (damage - getDefense()/2));
         }
 
     }
@@ -112,10 +112,10 @@ public class Lutemon implements Serializable {
         return this.attack;
     }
 
-    public static Comparator<Lutemon> LvlComparator = new Comparator<Lutemon>() {
+    public static Comparator<Lutemon> AttackComparator = new Comparator<Lutemon>() {
         @Override
         public int compare(Lutemon p1, Lutemon p2) {
-            return p1.getName().compareTo(p2.getName());
+            return p1.getAttack().compareTo(p2.getAttack());
         }
     };
 

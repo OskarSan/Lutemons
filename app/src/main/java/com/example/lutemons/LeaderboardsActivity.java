@@ -26,9 +26,9 @@ public class LeaderboardsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lutemonArrayList = Storage.getInstance().makeNewArrayList();
+        lutemonArrayList = Storage.getInstance().getLutemonArrayList();
 
-        lvlButton = findViewById(R.id.lvlButton);
+        lvlButton = findViewById(R.id.AttackButton);
         hpButton = findViewById(R.id.hpButton);
         winsButton = findViewById(R.id.winsButton);
 
@@ -41,8 +41,8 @@ public class LeaderboardsActivity extends AppCompatActivity {
 
     }
 
-    public void sortByLVL(View view){
-        lutemonArrayList = Storage.getInstance().sortArrayListByLvl();
+    public void sortByAttack(View view){
+        lutemonArrayList = Storage.getInstance().sortArrayListByAttack();
         LBPageAdapter.notifyDataSetChanged();
     }
     public void sortByHP(View view){

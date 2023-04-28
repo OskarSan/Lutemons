@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class LutemonViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
-    TextView tvName, tvHealth;
+    TextView tvName, tvHealth, tvWins, tvAttack;
     public LutemonViewHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.imageView);
         tvName = itemView.findViewById(R.id.tvName);
         tvHealth = itemView.findViewById(R.id.tvHealth);
-    }
+       }
 }

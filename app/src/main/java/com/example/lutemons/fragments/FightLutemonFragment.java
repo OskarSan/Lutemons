@@ -1,5 +1,6 @@
 package com.example.lutemons.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.lutemons.FightActivity;
+import com.example.lutemons.LeaderboardsActivity;
 import com.example.lutemons.Lutemon;
 import com.example.lutemons.LutemonListAdapter;
 import com.example.lutemons.R;
@@ -38,11 +43,12 @@ public class FightLutemonFragment extends Fragment {
     private ArrayList<Lutemon> lutemonsNameList;
     private SpinnerAdapter spinnerAdapter;
     private Spinner dropDown, dropDown2;
-
+    private ArrayList<String> fightStory = new ArrayList<>();
 
     public FightLutemonFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
@@ -69,8 +75,14 @@ public class FightLutemonFragment extends Fragment {
 
         fightButton.setOnClickListener(new View.OnClickListener(){
             @Override
+
             public void onClick(View v) {
                 fight(selectedLutemon1, selectedLutemon2);
+                FightActivity.fetchStory(fightStory);
+                Intent intent = new Intent(getContext(), FightActivity.class);
+                startActivity(intent);
+
+
             }
         });
         return view;
@@ -116,34 +128,46 @@ public class FightLutemonFragment extends Fragment {
 
     }
     public void fight(Lutemon fighter1, Lutemon fighter2){
+        fightStory.clear();
+        Toast toast = Toast.makeText(getContext(), "Valitse kaksi erillistä lutemonia", Toast.LENGTH_SHORT);
+
             int i = 0;
             if(fighter1 == fighter2){
                 System.out.println("EI kahta samaa pls");
+                toast.show();
             }else {
+                ;
                 while (fighter1.getHealth() > 0 & fighter2.getHealth() > 0) {
                     //todo attack ja defense metodikutsut tähän
+                    fightStory.add("1: "+fighter1.getName() +" att:"+fighter1.getAttack()+"; def: "+fighter1.getDefense() +"; HP: "+fighter1.getHealth()+"/"+fighter1.getMaxHealth());
+                    fightStory.add("2: "+fighter2.getName() +" att:"+fighter2.getAttack()+"; def: "+fighter2.getDefense() +"; HP: "+fighter2.getHealth()+"/"+fighter2.getMaxHealth());
+
                     fighter2.defense(fighter1.attack());
+                    fightStory.add(fighter1.getName()+ " hyökkää ");
                     fighter1.defense(fighter2.attack());
-                    System.out.println(fighter2.getHealth());
+                    fightStory.add(fighter2.getName()+ " hyökkää ");
                     if(i>100){
                         break;
                     }
                     i++;
                 }
                 if(fighter1.getHealth()>0 & fighter2.getHealth() > 0){
-                    System.out.println("Tasapeli");
+                    fightStory.add("Lutemonin väsyivät tylsään taisteluun: Tasapeli.");
                 } else if (fighter1.getHealth() > 0) {
-                    System.out.println(fighter1.getName() + " voittaa");
+                    fightStory.add(fighter1.getName() + " voittaa");
                     fighter1.setExperience(fighter1.getExperience() + 10);
+                    fighter1.setWins(fighter1.getWins() + 1);
                     Storage.getInstance().removeLutemon(fighter2);
                 } else {
-                    System.out.println(fighter2.getName() + " voittaa");
+                    fightStory.add(fighter2.getName() + " voittaa");
                     fighter2.setExperience(fighter2.getExperience() + 10);
+                    fighter2.setWins(fighter2.getWins() + 1);
                     Storage.getInstance().removeLutemon(fighter1);
+
                 }
 
                 Storage.getInstance().saveLutemons(getContext());
-                onResume();
+
             }
         }
     }

@@ -26,25 +26,31 @@ public class TrainingViewAdapter extends RecyclerView.Adapter<TrainingViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TrainingViewHolder holder, int position) {
-        holder.tvName.setText(lutemons.get(position).getName());
-        holder.tvHealth.setText(String.valueOf(lutemons.get(position).getHealth()));
-        holder.btnTrain.setOnClickListener(view -> {
-            int pos = holder.getAdapterPosition();
-            System.out.println("Toimii train");
-            //Todo Tähän training metodin kutsu
-        });
-        holder.btnHeal.setOnClickListener(view -> {
-            //Healing
-            int pos = holder.getAdapterPosition();
-            Lutemon thisLutemon = lutemons.get(position);
-            assert thisLutemon != null;
-            thisLutemon.setHealth(thisLutemon.getHealth()+thisLutemon.getExperience());
-            if(thisLutemon.getHealth() > thisLutemon.getMaxHealth()){
-                thisLutemon.setHealth(thisLutemon.getMaxHealth());
-            }
-            thisLutemon.setExperience(0);
-            System.out.println("Toimii heal");
-        });
+
+
+            holder.tvName.setText(lutemons.get(position).getName());
+            holder.tvHealth.setText(String.valueOf(lutemons.get(position).getHealth()));
+            holder.tvAttack.setText(String.valueOf(lutemons.get(position).getAttack()));
+            holder.tvDefence.setText(String.valueOf(lutemons.get(position).getDefense()));
+            holder.tvWins.setText(String.valueOf(lutemons.get(position).getWins()));
+            holder.btnTrain.setOnClickListener(view -> {
+                int pos = holder.getAdapterPosition();
+                System.out.println("Toimii train");
+                //Todo Tähän training metodin kutsu
+            });
+            holder.btnHeal.setOnClickListener(view -> {
+                //Healing
+                int pos = holder.getAdapterPosition();
+                Lutemon thisLutemon = lutemons.get(position);
+                assert thisLutemon != null;
+                thisLutemon.setHealth(thisLutemon.getHealth() + thisLutemon.getExperience());
+                if (thisLutemon.getHealth() > thisLutemon.getMaxHealth()) {
+                    thisLutemon.setHealth(thisLutemon.getMaxHealth());
+                }
+                thisLutemon.setExperience(0);
+                System.out.println("Toimii heal");
+            });
+
     }
 
     @Override

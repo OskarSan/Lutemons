@@ -22,15 +22,33 @@
 
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name" />
 
         <TextView
             android:id="@+id/tvHealth"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvAttack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attack" />
+
+        <TextView
+            android:id="@+id/tvDefence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Defence" />
+
+        <TextView
+            android:id="@+id/tvWins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wins" />
 
     </LinearLayout>
 
