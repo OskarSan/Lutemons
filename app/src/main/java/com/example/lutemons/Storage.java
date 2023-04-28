@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -70,6 +72,26 @@ public class Storage {
         return lutemonHashMap;
     }
 
+    public ArrayList<Lutemon> getLutemonArrayList(){
+        ArrayList<Lutemon> lutemons = new ArrayList<>();
+        storage = Storage.getInstance();
+        HashMap<Integer, Lutemon> lutemonHashMap = storage.getLutemonHashMap();
+        for(HashMap.Entry<Integer, Lutemon> set :lutemonHashMap.entrySet()){
+            lutemons.add(set.getValue());
+        }
+        return lutemons;
+    }
+    public void removeLutemon(Lutemon lutemon){
+        Iterator<Map.Entry<Integer, Lutemon>> it = lutemonHashMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Integer, Lutemon> entry = it.next();
+            if (entry.getValue().equals(lutemon)) {
+                // remove the matching entry
+                it.remove();
+            }
+        }
+
+
     public ArrayList<Lutemon> sortArrayListByLvl(){
         makeNewArrayList();
         lutemonArrayList.sort(Lutemon.LvlComparator);
@@ -92,6 +114,7 @@ public class Storage {
             lutemonArrayList.add(entry.getValue());
         }
         return lutemonArrayList;
+
     }
 
 }
