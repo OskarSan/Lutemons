@@ -41,13 +41,13 @@ public class TrainLutemonFragment extends Fragment {
         storage = Storage.getInstance();
         recyclerView = view.findViewById(R.id.rvLutemonList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new TrainingViewAdapter(getContext(), storage.getLutemonHashMap()));
-
+        recyclerView.setAdapter(new TrainingViewAdapter(getContext(), storage.getLutemonArrayList()));
         return view;
     }
     public void onResume(){
         super.onResume();
-        recyclerView.setAdapter(new TrainingViewAdapter(getContext(), storage.getLutemonHashMap()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new TrainingViewAdapter(getContext(), storage.getLutemonArrayList()));
     }
 
 

@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -64,7 +65,15 @@ public class Storage {
     public HashMap<Integer, Lutemon> getLutemonHashMap() {
         return lutemonHashMap;
     }
-
+    public ArrayList<Lutemon> getLutemonArrayList(){
+        ArrayList<Lutemon> lutemons = new ArrayList<>();
+        storage = Storage.getInstance();
+        HashMap<Integer, Lutemon> lutemonHashMap = storage.getLutemonHashMap();
+        for(HashMap.Entry<Integer, Lutemon> set :lutemonHashMap.entrySet()){
+            lutemons.add(set.getValue());
+        }
+        return lutemons;
+    }
     public void removeLutemon(Lutemon lutemon){
         Iterator<Map.Entry<Integer, Lutemon>> it = lutemonHashMap.entrySet().iterator();
         while (it.hasNext()) {

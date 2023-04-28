@@ -21,6 +21,7 @@ import com.example.lutemons.LutemonListAdapter;
 import com.example.lutemons.R;
 import com.example.lutemons.SpinnerAdapter;
 import com.example.lutemons.Storage;
+import com.example.lutemons.TrainingViewAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -122,6 +123,7 @@ public class FightLutemonFragment extends Fragment {
                 while (fighter1.getHealth() > 0 & fighter2.getHealth() > 0) {
                     //todo attack ja defense metodikutsut tähän
                     fighter2.defense(fighter1.attack());
+                    fighter1.defense(fighter2.attack());
                     System.out.println(fighter2.getHealth());
                     if(i>100){
                         break;

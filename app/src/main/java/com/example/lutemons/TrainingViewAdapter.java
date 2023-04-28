@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TrainingViewAdapter extends RecyclerView.Adapter<TrainingViewHolder> {
     private Context context;
-    private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
+    private ArrayList<Lutemon> lutemons = new ArrayList<>();
 
-    public TrainingViewAdapter(Context context, HashMap<Integer, Lutemon> lutemons) {
+    public TrainingViewAdapter(Context context, ArrayList<Lutemon> lutemons) {
         this.context = context;
         this.lutemons = lutemons;
     }
-
     @NonNull
     @Override
     public TrainingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,7 +44,6 @@ public class TrainingViewAdapter extends RecyclerView.Adapter<TrainingViewHolder
             }
             thisLutemon.setExperience(0);
             System.out.println("Toimii heal");
-
         });
     }
 
@@ -52,5 +51,6 @@ public class TrainingViewAdapter extends RecyclerView.Adapter<TrainingViewHolder
     public int getItemCount() {
         return lutemons.size();
     }
+
 }
 
