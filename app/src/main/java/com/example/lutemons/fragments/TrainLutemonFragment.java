@@ -49,4 +49,7 @@ public class TrainLutemonFragment extends Fragment {
         super.onResume();
         recyclerView.setAdapter(new TrainingViewAdapter(getContext(), storage.getLutemonHashMap()));
     }
+
+
+
 }

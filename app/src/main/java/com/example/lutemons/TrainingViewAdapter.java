@@ -34,9 +34,17 @@ public class TrainingViewAdapter extends RecyclerView.Adapter<TrainingViewHolder
             //Todo Tähän training metodin kutsu
         });
         holder.btnHeal.setOnClickListener(view -> {
+            //Healing
             int pos = holder.getAdapterPosition();
+            Lutemon thisLutemon = lutemons.get(position);
+            assert thisLutemon != null;
+            thisLutemon.setHealth(thisLutemon.getHealth()+thisLutemon.getExperience());
+            if(thisLutemon.getHealth() > thisLutemon.getMaxHealth()){
+                thisLutemon.setHealth(thisLutemon.getMaxHealth());
+            }
+            thisLutemon.setExperience(0);
             System.out.println("Toimii heal");
-            //Todo Tähän heal metodin kutsu
+
         });
     }
 

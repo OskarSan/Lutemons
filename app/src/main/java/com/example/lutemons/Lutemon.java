@@ -98,7 +98,10 @@ public class Lutemon implements Serializable {
 
     public void defense(int damage){
         System.out.println(damage + " " + getDefense());
-        this.setHealth(getHealth() - (damage - getDefense()));
+        if(damage - getDefense() > 0){
+            this.setHealth(getHealth() - (damage - getDefense()));
+        }
+
     }
     public int attack(){
         return this.attack;

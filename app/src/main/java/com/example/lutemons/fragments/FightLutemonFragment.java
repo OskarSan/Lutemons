@@ -115,7 +115,7 @@ public class FightLutemonFragment extends Fragment {
 
     }
     public void fight(Lutemon fighter1, Lutemon fighter2){
-
+            int i = 0;
             if(fighter1 == fighter2){
                 System.out.println("EI kahta samaa pls");
             }else {
@@ -123,8 +123,14 @@ public class FightLutemonFragment extends Fragment {
                     //todo attack ja defense metodikutsut tähän
                     fighter2.defense(fighter1.attack());
                     System.out.println(fighter2.getHealth());
+                    if(i>100){
+                        break;
+                    }
+                    i++;
                 }
-                if (fighter1.getHealth() > 0) {
+                if(fighter1.getHealth()>0 & fighter2.getHealth() > 0){
+                    System.out.println("Tasapeli");
+                } else if (fighter1.getHealth() > 0) {
                     System.out.println(fighter1.getName() + " voittaa");
                     fighter1.setExperience(fighter1.getExperience() + 10);
                     Storage.getInstance().removeLutemon(fighter2);
@@ -133,6 +139,7 @@ public class FightLutemonFragment extends Fragment {
                     fighter2.setExperience(fighter2.getExperience() + 10);
                     Storage.getInstance().removeLutemon(fighter1);
                 }
+
                 Storage.getInstance().saveLutemons(getContext());
                 onResume();
             }
