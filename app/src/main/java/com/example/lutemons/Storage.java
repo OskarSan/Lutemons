@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Storage {
     private static Storage storage = null;
@@ -63,5 +65,15 @@ public class Storage {
         return lutemonHashMap;
     }
 
+    public void removeLutemon(Lutemon lutemon){
+        Iterator<Map.Entry<Integer, Lutemon>> it = lutemonHashMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Integer, Lutemon> entry = it.next();
+            if (entry.getValue().equals(lutemon)) {
+                // remove the matching entry
+                it.remove();
+            }
+        }
+    }
 
 }
