@@ -42,15 +42,15 @@ public class LeaderboardsActivity extends AppCompatActivity {
     }
 
     public void sortByAttack(View view){
-        lutemonArrayList = Storage.getInstance().sortArrayListByAttack();
+        lutemonArrayList = Storage.getInstance().sortArrayListByAttack(lutemonArrayList);
         LBPageAdapter.notifyDataSetChanged();
     }
     public void sortByHP(View view){
-        lutemonArrayList = Storage.getInstance().sortArrayListByHP();
+        lutemonArrayList = Storage.getInstance().sortArrayListByHP(lutemonArrayList);
         LBPageAdapter.notifyDataSetChanged();
     }
     public void sortByWins(View view){
-        lutemonArrayList = Storage.getInstance().sortArrayListByWins();
+        lutemonArrayList = Storage.getInstance().sortArrayListByWins(lutemonArrayList);
         LBPageAdapter.notifyDataSetChanged();
     }
 

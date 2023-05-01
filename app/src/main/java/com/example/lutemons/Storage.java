@@ -85,18 +85,18 @@ public class Storage {
         }
     }
 
-    public ArrayList<Lutemon> sortArrayListByAttack(){
+    public ArrayList<Lutemon> sortArrayListByAttack(ArrayList<Lutemon> lutemonArrayList){
         getLutemonArrayList();
         lutemonArrayList.sort(Lutemon.AttackComparator);
         return lutemonArrayList;
     }
-    public ArrayList<Lutemon> sortArrayListByHP(){
-        getLutemonArrayList();
+    public ArrayList<Lutemon> sortArrayListByHP(ArrayList<Lutemon> lutemonArrayList){
+
         lutemonArrayList.sort(Lutemon.HPComparator);
         return lutemonArrayList;
     }
-    public ArrayList<Lutemon> sortArrayListByWins(){
-        getLutemonArrayList();
+    public ArrayList<Lutemon> sortArrayListByWins(ArrayList<Lutemon> lutemonArrayList){
+
         lutemonArrayList.sort(Lutemon.WinsComparator);
         return lutemonArrayList;
     }
