@@ -10,13 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TrainingViewHolder extends RecyclerView.ViewHolder{
     ImageView imageView;
-    TextView tvName, tvHealth;
+    TextView tvName, tvHealth, tvAttack, tvDefence, tvWins;
     Button btnTrain, btnHeal;
     public TrainingViewHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.imageView);
         tvName = itemView.findViewById(R.id.tvName);
         tvHealth = itemView.findViewById(R.id.tvHealth);
+        tvAttack = itemView.findViewById(R.id.tvAttack);
+        tvDefence = itemView.findViewById(R.id.tvDefence);
+        tvWins = itemView.findViewById(R.id.tvWins);
+
         btnTrain = itemView.findViewById(R.id.btnTrain);
         btnHeal = itemView.findViewById(R.id.btnHeal);
     }

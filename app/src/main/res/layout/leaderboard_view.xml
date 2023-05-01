@@ -32,17 +32,26 @@
                 android:id="@+id/LBName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tuote"
-                />
+                android:text="Name" />
 
 
             <TextView
                 android:id="@+id/LBHealth"
                 android:layout_width="wrap_content"
-                android:text="LisäTietoja"
                 android:layout_height="wrap_content"
-                />
+                android:text="Health" />
 
+            <TextView
+                android:id="@+id/LBWins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wins" />
+
+            <TextView
+                android:id="@+id/LBAttack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attack" />
 
 
         </LinearLayout>

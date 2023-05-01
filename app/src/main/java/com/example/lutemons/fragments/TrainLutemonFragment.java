@@ -42,11 +42,11 @@ public class TrainLutemonFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rvLutemonList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new TrainingViewAdapter(getContext(), storage.getLutemonArrayList()));
+
         return view;
     }
     public void onResume(){
         super.onResume();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new TrainingViewAdapter(getContext(), storage.getLutemonArrayList()));
     }
 

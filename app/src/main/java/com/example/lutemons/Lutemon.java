@@ -34,6 +34,7 @@ public class Lutemon implements Serializable {
     public Integer getAttack() {return attack;}
 
     public Integer getDefense() {return defense;}
+    public Float getFloatDefence() {return (float)defense;}
 
     public Integer getExperience() {return experience;}
 
@@ -101,21 +102,27 @@ public class Lutemon implements Serializable {
     }
 
 
-    public void defense(int damage){
+    public int defense(int damage){
+        Random random = new Random();
+        double randomValue = 0.5 + (0.5 - 0.1) * random.nextDouble();
         System.out.println(damage + " " + getDefense());
-        if(damage - getDefense() > 0){
-            this.setHealth(getHealth() - (damage - getDefense()));
-        }
+        int DMG = (int)(damage*1.5) - (int)(getFloatDefence() *  randomValue);
 
+        if( DMG > 0){
+            this.setHealth(getHealth() - DMG);
+        }else{
+            DMG = 0;
+        }
+        return DMG;
     }
     public int attack(){
         return this.attack;
     }
 
-    public static Comparator<Lutemon> LvlComparator = new Comparator<Lutemon>() {
+    public static Comparator<Lutemon> AttackComparator = new Comparator<Lutemon>() {
         @Override
         public int compare(Lutemon p1, Lutemon p2) {
-            return p1.getName().compareTo(p2.getName());
+            return p1.getAttack().compareTo(p2.getAttack());
         }
     };
 

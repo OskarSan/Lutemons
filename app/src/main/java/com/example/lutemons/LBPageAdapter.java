@@ -47,10 +47,13 @@ public class LBPageAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.leaderboard_view, null);
         TextView LBName = view.findViewById(R.id.LBName);
         TextView LBHealth = view.findViewById(R.id.LBHealth);
+        TextView LBWins = view.findViewById(R.id.LBWins);
+        TextView LBAttack = view.findViewById(R.id.LBAttack);
         ImageView LBPicture = view.findViewById(R.id.LBImageView);
         LBName.setText(lutemonArrayList.get(i).getName());
         LBHealth.setText(String.valueOf(lutemonArrayList.get(i).getHealth()));
-
+        LBWins.setText(String.valueOf(lutemonArrayList.get(i).getWins()));
+        LBAttack.setText(String.valueOf(lutemonArrayList.get(i).getAttack()));
         System.out.println(lutemonArrayList.get(i).getName());
         return view;
     }
