@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,9 +38,10 @@ public class SpinnerAdapter extends ArrayAdapter<Lutemon> {
             );
         }
         TextView tvSpinnerName = convertView.findViewById(R.id.lutemonNameSpinner);
+        ImageView ivFighterImage = convertView.findViewById(R.id.ivFighterImage);
         Lutemon currentLutemon = getItem(position);
         tvSpinnerName.setText(currentLutemon.getName());
-
+        ivFighterImage.setImageResource(currentLutemon.getImage());
         return convertView;
     }
 }

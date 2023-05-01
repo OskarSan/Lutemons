@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TrainingViewHolder extends RecyclerView.ViewHolder{
-    ImageView imageView;
+    ImageView ivTrainFighter;
     TextView tvName, tvHealth, tvAttack, tvDefence, tvWins;
     Button btnTrain, btnHeal;
     public TrainingViewHolder(@NonNull View itemView) {
         super(itemView);
-        imageView = itemView.findViewById(R.id.imageView);
+        ivTrainFighter = itemView.findViewById(R.id.ivTrainFighterImage);
         tvName = itemView.findViewById(R.id.tvName);
         tvHealth = itemView.findViewById(R.id.tvHealth);
         tvAttack = itemView.findViewById(R.id.tvAttack);

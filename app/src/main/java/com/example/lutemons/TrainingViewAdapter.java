@@ -27,21 +27,24 @@ public class TrainingViewAdapter extends RecyclerView.Adapter<TrainingViewHolder
     @Override
     public void onBindViewHolder(@NonNull TrainingViewHolder holder, int position) {
 
-
-            holder.tvName.setText(lutemons.get(position).getName());
-            holder.tvHealth.setText(String.valueOf(lutemons.get(position).getHealth()));
-            holder.tvAttack.setText(String.valueOf(lutemons.get(position).getAttack()));
-            holder.tvDefence.setText(String.valueOf(lutemons.get(position).getDefense()));
-            holder.tvWins.setText(String.valueOf(lutemons.get(position).getWins()));
+            holder.ivTrainFighter.setImageResource(lutemons.get(position).getImage());
+            holder.tvName.setText(lutemons.get(position).getName() + "    Lvl: " + lutemons.get(position).getLevel() + "        Exp: " + lutemons.get(position).getExperience());
+            holder.tvHealth.setText(String.valueOf("Elämä: " + lutemons.get(position).getHealth() + "/" + lutemons.get(position).getMaxHealth()));
+            holder.tvAttack.setText(String.valueOf("Hyökkäys: " + lutemons.get(position).getAttack()));
+            holder.tvDefence.setText(String.valueOf("Puolustus: " + lutemons.get(position).getDefense()));
+            holder.tvWins.setText(String.valueOf("Voitot: " + lutemons.get(position).getWins()));
             holder.btnTrain.setOnClickListener(view -> {
-                int pos = holder.getAdapterPosition();
-                System.out.println("Toimii train");
-                //Todo Tähän training metodin kutsu
+                lutemons.get(position).trainLutemon();
+                if(lutemons.get(position).getExperience() >= lutemons.get(position).getLevel() * 10 + 20){
+                    lutemons.get(position).levelUp();
+                }
+                notifyDataSetChanged();
+            //Todo Tähän training metodin kutsu
             });
             holder.btnHeal.setOnClickListener(view -> {
                 //Healing
-                lutemons.get(position).heal(lutemons.get(position).getMaxHealth());
-                System.out.println("Toimii heal");
+                lutemons.get(position).heal(lutemons.get(position).getExperience());
+                lutemons.get(position).setExperience(0);
                 notifyDataSetChanged();
                 Storage.getInstance().saveLutemons(context);
             });

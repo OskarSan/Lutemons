@@ -1,6 +1,7 @@
 package com.example.lutemons;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;

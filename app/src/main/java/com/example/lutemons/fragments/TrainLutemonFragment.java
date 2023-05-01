@@ -17,8 +17,6 @@ import com.example.lutemons.TrainingViewAdapter;
 
 public class TrainLutemonFragment extends Fragment {
 
-    private String mParam1;
-    private String mParam2;
     private Storage storage;
     private RecyclerView recyclerView;
 

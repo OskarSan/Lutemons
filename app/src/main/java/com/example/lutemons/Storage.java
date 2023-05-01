@@ -22,6 +22,7 @@ public class Storage {
     public void addLutemon(Lutemon lutemon){
         lutemonHashMap.put(id, lutemon);
         id += 1;
+        System.out.println(id);
     }
     public static Storage getInstance(){
         if(storage == null){
@@ -46,7 +47,8 @@ public class Storage {
         try {
             ObjectInputStream userReader = new ObjectInputStream(context.openFileInput("lutemons.data"));
             lutemonHashMap = (HashMap<Integer, Lutemon>) userReader.readObject();
-            id = lutemonHashMap.size();
+            id = lutemonHashMap.size() + 2;
+            System.out.println(id);
             userReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("Lutemonien lukeminen ei onnistunut");

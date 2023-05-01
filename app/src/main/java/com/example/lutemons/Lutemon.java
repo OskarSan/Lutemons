@@ -10,9 +10,9 @@ import java.util.Comparator;
 public class Lutemon implements Serializable {
 
     protected String name, color, species;
-    protected Integer attack, defense, experience, health, maxHealth, wins, losses;
+    protected Integer attack, defense, experience, health, maxHealth, wins, losses, image, level;
 
-    public Lutemon(String name, String color, String species,Integer attack, Integer defense, Integer experience, Integer health, Integer maxHealth, Integer wins, Integer losses){
+    public Lutemon(String name, String color, String species,Integer attack, Integer defense, Integer experience, Integer health, Integer maxHealth, Integer wins, Integer losses, Integer image, Integer level){
         this.name = name;
         this.color = color;
         this.species = species;
@@ -23,12 +23,14 @@ public class Lutemon implements Serializable {
         this.maxHealth = maxHealth;
         this.wins = wins;
         this.losses = losses;
+        this.image = image;
+        this.level = level;
     }
 
     public String getName() {return name;}
 
     public String getColor() {return color;}
-
+    public Integer getImage(){return image;}
     public String getSpecies() {return species;}
 
     public Integer getAttack() {return attack;}
@@ -58,20 +60,36 @@ public class Lutemon implements Serializable {
 
     public void setWins(Integer wins) {this.wins = wins;}
 
+    public Integer getLevel(){return level;}
+    public void setLevel(Integer level){this.level = level;}
+
     public void setLosses(Integer losses) {this.losses = losses;}
     public void levelUp(){
         String lutemonClass = this.getSpecies();
         switch (lutemonClass){
             case "Tank":
-                //Todo statsimuutokset levelupissa
+                this.setAttack(this.getAttack() + 2);
+                this.setDefense(this.getDefense() + 5);
+                this.setMaxHealth(this.getMaxHealth() + 10);
+                this.setHealth(this.getHealth() + 20);
+                this.setLevel(this.getLevel() + 1);
                 break;
             case "Warrior":
-
+                this.setAttack(this.getAttack() + 5);
+                this.setDefense(this.getDefense() + 2);
+                this.setMaxHealth(this.getMaxHealth() + 5);
+                this.setHealth(this.getHealth() + 20);
+                this.setLevel(this.getLevel() + 1);
                 break;
-            case "Monk":
-
+            case "Scout":
+                this.setAttack(this.getAttack() + 5);
+                this.setDefense(this.getDefense() + 10);
+                this.setMaxHealth(this.getMaxHealth() + 5);
+                this.setHealth(this.getHealth() + 20);
+                this.setLevel(this.getLevel() + 1);
                 break;
         }
+        this.setExperience(0);
     }
     public void heal(Integer healAmount){
         if(this.getHealth() + healAmount < this.getMaxHealth()){
