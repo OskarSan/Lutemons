@@ -133,26 +133,30 @@ public class FightLutemonFragment extends Fragment {
 
             int i = 0;
             if(fighter1 == fighter2){
-                System.out.println("EI kahta samaa pls");
                 toast.show();
             }else {
-                ;
+                fightStory.add(fighter1.getName() + " VS " +fighter2.getName()+"\n");
                 while (fighter1.getHealth() > 0 & fighter2.getHealth() > 0) {
                     //todo attack ja defense metodikutsut tähän
+
                     fightStory.add("1: "+fighter1.getName() +" att:"+fighter1.getAttack()+"; def: "+fighter1.getDefense() +"; HP: "+fighter1.getHealth()+"/"+fighter1.getMaxHealth());
                     fightStory.add("2: "+fighter2.getName() +" att:"+fighter2.getAttack()+"; def: "+fighter2.getDefense() +"; HP: "+fighter2.getHealth()+"/"+fighter2.getMaxHealth());
 
-                    fighter2.defense(fighter1.attack());
-                    fightStory.add(fighter1.getName()+ " hyökkää ");
-                    fighter1.defense(fighter2.attack());
-                    fightStory.add(fighter2.getName()+ " hyökkää ");
+
+                    fightStory.add(fighter1.getName()+ " hyökkää ja tekee "+fighter2.defense(fighter1.attack()) + " vahinkoa");
+                    if(fighter1.getHealth() <= 0){
+                        break;
+                    }
+                    fightStory.add(fighter2.getName()+ " hyökkää ja tekee "+fighter1.defense(fighter2.attack()) + " vahinkoa\n");
+
                     if(i>100){
                         break;
                     }
                     i++;
                 }
                 if(fighter1.getHealth()>0 & fighter2.getHealth() > 0){
-                    fightStory.add("Lutemonin väsyivät tylsään taisteluun: Tasapeli.");
+                    fightStory.add("Lutemonin väsyivät tylsään taisteluun:");
+                    fightStory.add("Tasapeli.");
                 } else if (fighter1.getHealth() > 0) {
                     fightStory.add(fighter1.getName() + " voittaa");
                     fighter1.setExperience(fighter1.getExperience() + 10);
