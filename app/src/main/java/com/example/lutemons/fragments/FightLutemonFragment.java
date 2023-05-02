@@ -157,17 +157,29 @@ public class FightLutemonFragment extends Fragment {
                 if(fighter1.getHealth()>0 & fighter2.getHealth() > 0){
                     fightStory.add("Lutemonin väsyivät tylsään taisteluun:");
                     fightStory.add("Tasapeli.");
-                } else if (fighter1.getHealth() > 0) {
+                }
+                else if (fighter1.getHealth() < 0 & fighter2.getHealth() < 0){
+                    fightStory.add("Molemmat Lutemonit kuolivat");
+                    fightStory.add("Tasapeli.");
+                    Storage.getInstance().removeLutemon(fighter1);
+                    Storage.getInstance().removeLutemon(fighter2);
+                }
+                else if (fighter1.getHealth() > 0) {
                     fightStory.add(fighter1.getName() + " voittaa");
                     fighter1.setExperience(fighter1.getExperience() + 10);
                     fighter1.setWins(fighter1.getWins() + 1);
                     Storage.getInstance().removeLutemon(fighter2);
+                    if(fighter1.getExperience() >= fighter1.getLevel() * 10 + 20){
+                        fighter1.levelUp();
+                    }
                 } else {
                     fightStory.add(fighter2.getName() + " voittaa");
                     fighter2.setExperience(fighter2.getExperience() + 10);
                     fighter2.setWins(fighter2.getWins() + 1);
                     Storage.getInstance().removeLutemon(fighter1);
-
+                    if(fighter2.getExperience() >= fighter2.getLevel() * 10 + 20){
+                        fighter2.levelUp();
+                    }
                 }
 
                 Storage.getInstance().saveLutemons(getContext());

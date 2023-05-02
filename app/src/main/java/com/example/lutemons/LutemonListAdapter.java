@@ -27,9 +27,9 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
         holder.tvName.setText(lutemons.get(position).getName());
-        holder.tvHealth.setText(String.valueOf(lutemons.get(position).getHealth()));
-        holder.tvWins.setText(String.valueOf(lutemons.get(position).getWins()));
-        holder.tvAttack.setText(String.valueOf(lutemons.get(position).getAttack()));
+        holder.tvHealth.setText(String.valueOf( "Elämä: " + lutemons.get(position).getHealth()));
+        holder.tvWins.setText(String.valueOf("Voitot: " + lutemons.get(position).getWins()));
+        holder.tvAttack.setText(String.valueOf(": " + lutemons.get(position).getAttack()));
     }
 
     @Override

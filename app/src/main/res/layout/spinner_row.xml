@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/lutemonNameSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="219dp"
+        android:layout_height="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/ivFighterImage"
+        android:gravity="center"
         android:text="TextView"
-        android:textSize = "30sp"
-        android:gravity = "center"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="196dp" />
+
+    <ImageView
+        android:id="@+id/ivFighterImage"
+        android:layout_width="143dp"
+        android:layout_height="141dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        app:srcCompat="@drawable/scout_oranssi" />
 </RelativeLayout>
