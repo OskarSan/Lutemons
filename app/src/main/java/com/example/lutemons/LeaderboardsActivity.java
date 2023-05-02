@@ -40,6 +40,11 @@ public class LeaderboardsActivity extends AppCompatActivity {
 
 
     }
+    public void onResume(){
+        super.onResume();
+        LBPageAdapter = new LBPageAdapter(getApplicationContext(), lutemonArrayList);
+        listView.setAdapter(LBPageAdapter);
+    }
 
     public void sortByAttack(View view){
         lutemonArrayList = Storage.getInstance().sortArrayListByAttack(lutemonArrayList);
