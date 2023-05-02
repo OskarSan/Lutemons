@@ -54,6 +54,7 @@ public class LBPageAdapter extends BaseAdapter {
         LBHealth.setText(String.valueOf(lutemonArrayList.get(i).getHealth()));
         LBWins.setText(String.valueOf(lutemonArrayList.get(i).getWins()));
         LBAttack.setText(String.valueOf(lutemonArrayList.get(i).getAttack()));
+        LBPicture.setImageResource(lutemonArrayList.get(i).getImage());
         System.out.println(lutemonArrayList.get(i).getName());
         return view;
     }
