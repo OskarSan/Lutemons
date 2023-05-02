@@ -140,21 +140,21 @@ public class Lutemon implements Serializable {
     public static Comparator<Lutemon> AttackComparator = new Comparator<Lutemon>() {
         @Override
         public int compare(Lutemon p1, Lutemon p2) {
-            return p1.getAttack().compareTo(p2.getAttack());
+            return -1 * p1.getAttack().compareTo(p2.getAttack());
         }
     };
 
     public static Comparator<Lutemon> HPComparator = new Comparator<Lutemon>() {
         @Override
         public int compare(Lutemon p1, Lutemon p2) {
-            return p1.getMaxHealth().compareTo(p2.getMaxHealth());
+            return -1 * p1.getMaxHealth().compareTo(p2.getMaxHealth());
         }
     };
 
     public static Comparator<Lutemon> WinsComparator = new Comparator<Lutemon>() {
         @Override
         public int compare(Lutemon p1, Lutemon p2) {
-            return p1.getWins().compareTo(p2.getWins());
+            return -1 * p1.getWins().compareTo(p2.getWins());
         }
     };
 

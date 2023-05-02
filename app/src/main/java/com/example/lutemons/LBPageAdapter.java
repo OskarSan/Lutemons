@@ -50,10 +50,10 @@ public class LBPageAdapter extends BaseAdapter {
         TextView LBWins = view.findViewById(R.id.LBWins);
         TextView LBAttack = view.findViewById(R.id.LBAttack);
         ImageView LBPicture = view.findViewById(R.id.LBImageView);
-        LBName.setText(lutemonArrayList.get(i).getName());
-        LBHealth.setText(String.valueOf(lutemonArrayList.get(i).getHealth()));
-        LBWins.setText(String.valueOf(lutemonArrayList.get(i).getWins()));
-        LBAttack.setText(String.valueOf(lutemonArrayList.get(i).getAttack()));
+        LBName.setText("Nimi: " + lutemonArrayList.get(i).getName());
+        LBHealth.setText("Elämä: " + lutemonArrayList.get(i).getHealth());
+        LBWins.setText("Voitot: "+ lutemonArrayList.get(i).getWins());
+        LBAttack.setText("Hyökkäys: "+ lutemonArrayList.get(i).getAttack());
         LBPicture.setImageResource(lutemonArrayList.get(i).getImage());
         System.out.println(lutemonArrayList.get(i).getName());
         return view;
